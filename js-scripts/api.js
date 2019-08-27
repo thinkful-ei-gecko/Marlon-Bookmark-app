@@ -1,33 +1,39 @@
 'use strict';
 
-const api = (function(){
+const api = (function () {
 
-  const baseURL = 'https://thinkful-list-api.herokuapp.com/marlon/';
-  const getBookmarks = function(){
-    return fetch (`${baseURL}/bookmarks`);
+  const baseURL = 'https://thinkful-list-api.herokuapp.com/marlon';
+  const getBookmarks = function () {
+    return fetch(`${baseURL}/bookmarks`);
   };
-  const createBookmark = function(title, URL, description){
 
+  const createBookmark = function (title, url, description, rating) {
     let newBookmark = JSON.stringify({
       title,
-      URL,
+      url,
       description,
+      rating,
+      id: cuid()
     });
 
-    return fetch(`${baseURL}/bookmarks`,
-      {
-        method: 'POST',
-        headers: {'Content-type': 'application/json'},
-        body: newBookmark
-      });
+    return fetch(`${baseURL}/bookmarks`, {
+      method: 'POST',
+      headers: {'Content-type': 'application/json'},
+      body: newBookmark
+    });
 
   };
   //   const updateBookmark = function(name){
 
   //   };
 
-  const deleteBookmark = function(name){
-
+  const deleteBookmark = function (id) {
+    return fetch (`${baseURL}/bookmarks/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
   };
 
   return {
@@ -37,4 +43,3 @@ const api = (function(){
     deleteBookmark,
   };
 }());
-

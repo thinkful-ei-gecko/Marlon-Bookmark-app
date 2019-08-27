@@ -3,17 +3,19 @@
 
 const Bookmark = (function(){
 
-  const create = function(title, URL, description, rating ){
+  const createLocalBookmark = function(bookmark){
+
     return {
-      title,
-      URL,
-      description,
-      rating,
+      title: bookmark.title,
+      url: bookmark.url,
+      description: bookmark.description,
+      rating: bookmark.rating,
       expandedView: false,
       isEditing: false,
+      isHidden: false,
     };
   };
   return{
-    create,
+    createLocalBookmark,
   };
 }());

@@ -12,39 +12,45 @@
     <header>
         <h1>Your Bookmarks</h1>
     </header>
-    <section = "button-options">
-      <button type = "submit" id = "add-bookmark">Add a bookmark</button>
+    <section class = "button-options">
+      <button type = "button" id = "add-bookmark">Add Bookmark</button>
       <select class = "filter-by-stars">
-        <option value = "5-stars">5 Stars</option>
-        <option value = "4-stars">4 Stars++</option>
-        <option value = "3-stars">3 Stars++</option>
-        <option value = "2-stars">2 Stars++</option>
-        <option value = "1-stars">1 Stars++</option>
+        <option value = "none">Min Rating</option>
+        <option value = "5">5 Stars</option>
+        <option value = "4">4 Stars++</option>
+        <option value = "3">3 Stars++</option>
+        <option value = "2">2 Stars++</option>
+        <option value = "1">1 Stars++</option>
       </select>
     </section>
-    <u1 class = "bookmark-list"></u1>
-    <form class = "add-bookmark-form">
-      <fieldset class = "bookmark-form-display">
-        <div class = "add-input-container title">
-         <label for = "input-bookmark-title">Title</label>
-         <input type = "text" class = "input-bookmark-title" placeholder= "Enter a title">
-        </div>
-         <div class = "add-input-container URL">
-         <label for = "input-bookmark-URL">Website URL</label>
-        <input type = "text" class = "input-bookmark-URL" placeholder = "Enter the website URL">
-        </div>
-       <div class = "add-input-container title">
-         <label for = "input-bookmark-description">Description</label>
-         <input type = "text" class = "input-site-description" placeholder = "Enter a description">
-       </div>
-       <div class = add-button-container>
-        <button type = 'click' button class = "add-bookmark-button" id = "add-bookmark-cancel">Cancel</button>
-        <button type = 'submit' button class = "add-bookmark-button" id = "add-bookmark-submit">Submit</button>
-       </div>
-      </fieldset>
-    </form>
-  
 
+    <u1 class = "bookmark-list">
+    </u1>
+
+    <form class = "add-bookmark-form">
+        <fieldset class = "bookmark-form-display">
+          <div class = "add-input-container title">
+           <label for = "input-bookmark-title">Title</label>
+           <input type = "text" class = "input-bookmark-title" placeholder= "Enter a title">
+          </div>
+           <div class = "add-input-container URL">
+           <label for = "input-bookmark-URL">Website URL</label>
+          <input type = "text" class = "input-bookmark-URL" placeholder = "Enter the website URL">
+          </div>
+         <div class = "add-input-container title">
+           <label for = "input-bookmark-description">Description</label>
+           <input type = "text" class = "input-bookmark-description" placeholder = "Enter a description">
+         </div>
+         <div class = "add-input-container rating">
+           <label for "input-container rating">Rating</label>
+           <input type = "number" class = "input-bookmark-rating" min = "1" max = "5" placeholder = "1-5">
+         </div>
+         <div class = add-button-container>
+          <button type = 'button' button class = "add-bookmark-button" id = "add-bookmark-cancel">Cancel</button>
+          <button type = 'submit' button class = "add-bookmark-button" id = "add-bookmark-submit">Submit</button>
+         </div>
+        </fieldset>
+      </form>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="js-scripts/api.js"></script>

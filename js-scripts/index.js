@@ -7,5 +7,6 @@ $(document).ready(function(){
     .then(bookmarks => {
       bookmarks.forEach(bookmark => Store.addtoBookmarkStore(bookmark));
     });
-    
+
+  bookmarkList.inititalizeEventListners();
 });
