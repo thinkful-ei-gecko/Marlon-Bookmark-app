@@ -10,6 +10,7 @@ const Bookmark = (function(){
       url: bookmark.url,
       description: bookmark.description,
       rating: bookmark.rating,
+      id: bookmark.id,
       expandedView: false,
       isEditing: false,
       isHidden: false,
