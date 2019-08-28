@@ -20,7 +20,7 @@ const Store = (function(){
   return {
     bookmarks: [],
     addingBookmark: false,
-    filteringBookmarks: false,
+    filterByRating: 0,
     addtoBookmarkStore,
     findByID,
     findAndDelete,

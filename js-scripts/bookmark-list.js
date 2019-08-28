@@ -7,22 +7,23 @@ const bookmarkList = (function () {
   const render = function(){
     let bookmarks = [...Store.bookmarks];
 
-    $('.bookmark-list').html(generateBookmarksString(bookmarks));
+    bookmarks = bookmarks.filter(bookmark => bookmark.rating >= Store.filterByRating);
 
     if (Store.addingBookmark === true){
       $('.add-bookmark-form').css('visibility','visible');
     }
-    else if (Store.addingBookmark === false){
+    if (Store.addingBookmark === false){
       $('.add-bookmark-form').css('visibility','hidden');
     }
 
-    console.log('Render ran!');
+    $('.bookmark-list').html(generateBookmarksString(bookmarks));
+
   };
     
 
   const generateBookmarkElement = function (bookmark) {
- 
-    return `
+    if (bookmark.expandedView === true){
+      return `
      <li class = "bookmark-list-element">
       <button type = "button" data-id="${bookmark.id}" class = "bookmark-element-expand">${bookmark.title} ${bookmark.rating}</button>
       <section class = "bookmark-expanded-view">
@@ -30,11 +31,14 @@ const bookmarkList = (function () {
       <p>${bookmark.url}</p>
       <h2>Description</h2>
       <p>${bookmark.description}</p>
-      <button id = "bookmark-element-edit" data-id="${bookmark.id}">Edit</button>
       <button id = "bookmark-element-delete" data-id="${bookmark.id}">Remove</button>
       </section>
      </li>`;
-
+    }
+    return `
+    <li class = "bookmark-list-element">
+     <button type = "button" data-id="${bookmark.id}" class = "bookmark-element-expand">${bookmark.title} ${bookmark.rating}</button>
+    </li>`;
   };
 
   const generateBookmarksString = function(bookmarks){
@@ -42,7 +46,7 @@ const bookmarkList = (function () {
   };
 
   const handleAddBookmark = function(){
-    $('.button-options').on('click', '#add-bookmark', () => {
+    $('.button-options').on('click', '#add-bookmark', event => {
       Store.addingBookmark = true;
       render();
     });
@@ -73,14 +77,13 @@ const bookmarkList = (function () {
         .then(newBookmark => {
           Store.addtoBookmarkStore(newBookmark);
           render();
+          Store.addingBookmark = false;
         });
     });
   };   
 
   const toggleExpandedView = function(bookmark){
     bookmark.expandedView = !bookmark.expandedView;
-    $('.bookmark-element-expand').toggleClass('active', true);
-    $('.bookmark-element-expand').toggleClass('active', false);
   };
 
   const handleToggleExpandedView = function(){
@@ -91,13 +94,8 @@ const bookmarkList = (function () {
       console.log(currentBookmark);
       toggleExpandedView(currentBookmark);
       
-      if(currentBookmark.expandedView === true){
-        $('.bookmark-expanded-view').css('display', 'block');
-      }
-      else{
-        $('.bookmark-expanded-view').css('display', 'none');
-      }
       console.log('Toggle view ran!');
+      render();
     });
   };
 
@@ -113,29 +111,36 @@ const bookmarkList = (function () {
         });
     });
   };
-  //   const filterByStars = function(num){
-  //     Store.bookmarks.filter(bookmark => bookmark.rating > num); 
-  //   };
+  
+  const filterByStars = function(num){
+    let bookmarks = Store.bookmarks;
+    return bookmarks.filter(bookmark => bookmark.rating <= num);
+  };
 
-  //   const handleFilterByStars = function(num){
-         
-  //   };
+  const handleFilterByStars = function(){
+    $('.filter-by-stars').on('change', event => {
+      console.log('Filter ran!');
+      Store.filterByRating = $('.filter-by-stars').val();
+   
+      render();
+    });
+  };
 
-  const inititalizeEventListners = function(){
+  const inititalizeEventListeners = function(){
     handleAddBookmarkSubmit();
     handleAddBookmark();
     handleAddBookmarkCancel();
     handleToggleExpandedView();
     handleDeleteBookmark();
+    handleFilterByStars();
   };
 
 
   return {
-    inititalizeEventListners,
+    inititalizeEventListeners,
     render,
   };
 
 }());
 
 
-console.log('Test');

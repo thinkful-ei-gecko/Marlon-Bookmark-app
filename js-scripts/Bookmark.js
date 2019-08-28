@@ -8,7 +8,7 @@ const Bookmark = (function(){
     return {
       title: bookmark.title,
       url: bookmark.url,
-      description: bookmark.description,
+      description: bookmark.desc,
       rating: bookmark.rating,
       id: bookmark.id,
       expandedView: false,

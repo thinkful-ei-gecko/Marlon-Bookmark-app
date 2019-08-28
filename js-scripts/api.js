@@ -32,11 +32,11 @@ const api = (function () {
     return fetch(`${baseURL}/bookmarks`);
   };
 
-  const createBookmark = function (title, url, description, rating) {
+  const createBookmark = function (title, url, desc, rating) {
     let newBookmark = JSON.stringify({
       title,
       url,
-      description,
+      desc,
       rating,
     });
 
@@ -47,9 +47,6 @@ const api = (function () {
     });
 
   };
-  //   const updateBookmark = function(name){
-
-  //   };
 
   const deleteBookmark = function (id) {
     return fetch (`${baseURL}/bookmarks/${id}`, {
@@ -63,7 +60,6 @@ const api = (function () {
   return {
     getBookmarks,
     createBookmark,
-    //updateBookmark,
     deleteBookmark,
   };
 }());

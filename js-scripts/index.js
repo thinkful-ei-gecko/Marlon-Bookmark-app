@@ -6,7 +6,8 @@ $(document).ready(function(){
     .then (res => res.json())
     .then(bookmarks => {
       bookmarks.forEach(bookmark => Store.addtoBookmarkStore(bookmark));
+      bookmarkList.render();
     });
   
-  bookmarkList.inititalizeEventListners();
+  bookmarkList.inititalizeEventListeners();
 });
