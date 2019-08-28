@@ -9,6 +9,8 @@ const bookmarkList = (function () {
 
     bookmarks = bookmarks.filter(bookmark => bookmark.rating >= Store.filterByRating);
 
+    bookmarks = bookmarks.sort((a,b) => b.rating - a.rating);
+
     if (Store.addingBookmark === true){
       $('.add-bookmark-form').css('visibility','visible');
     }
@@ -19,16 +21,25 @@ const bookmarkList = (function () {
     $('.bookmark-list').html(generateBookmarksString(bookmarks));
 
   };
-    
+  
+  const generateStars = function(num) {
+
+    let starString = [];
+    for (let i = 0; i < num; i++){
+      starString.push('&#9733');
+    }
+    return starString.join('');
+  };
 
   const generateBookmarkElement = function (bookmark) {
+    
     if (bookmark.expandedView === true){
       return `
      <li class = "bookmark-list-element">
-      <button type = "button" data-id="${bookmark.id}" class = "bookmark-element-expand">${bookmark.title} ${bookmark.rating}</button>
+      <button type = "button" data-id="${bookmark.id}" class = "bookmark-element-expand">${bookmark.title} ${generateStars(bookmark.rating)}</button>
       <section class = "bookmark-expanded-view">
-      <h2>Website URL</h2>
-      <p>${bookmark.url}</p>
+      <h2>Visit Website</h2>
+      <a href = ${bookmark.url}>${bookmark.url}</a>
       <h2>Description</h2>
       <p>${bookmark.description}</p>
       <button id = "bookmark-element-delete" data-id="${bookmark.id}">Remove</button>
@@ -37,7 +48,7 @@ const bookmarkList = (function () {
     }
     return `
     <li class = "bookmark-list-element">
-     <button type = "button" data-id="${bookmark.id}" class = "bookmark-element-expand">${bookmark.title} ${bookmark.rating}</button>
+     <button type = "button" data-id="${bookmark.id}" class = "bookmark-element-expand">${bookmark.title} ${generateStars(bookmark.rating)}</button>
     </li>`;
   };
 
@@ -76,8 +87,8 @@ const bookmarkList = (function () {
         .then(res => res.json())
         .then(newBookmark => {
           Store.addtoBookmarkStore(newBookmark);
-          render();
           Store.addingBookmark = false;
+          render();
         });
     });
   };   
