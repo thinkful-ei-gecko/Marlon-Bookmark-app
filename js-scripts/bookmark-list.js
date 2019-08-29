@@ -48,7 +48,7 @@ const bookmarkList = (function () {
     }
     return `
     <li class = "bookmark-list-element">
-     <button type = "button" data-id="${bookmark.id}" class = "bookmark-element-expand">${bookmark.title} ${generateStars(bookmark.rating)}</button>
+     <button type = "button" data-id="${bookmark.id}" class = "bookmark-element-expand after">${bookmark.title} ${generateStars(bookmark.rating)}</button>
     </li>`;
   };
 

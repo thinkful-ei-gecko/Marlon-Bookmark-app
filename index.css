@@ -1,26 +1,36 @@
 * {
     box-sizing: border-box;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 600;
+    color: #333333;
 }
 
 
-body{
-    background: #BBC6F2;
+body {
+    background: #F0F0F0;
 }
 
-h1{
+header h1 {
     margin: 5px;
-    margin-left: 2.5%;
+    margin-right: 65%;
+    text-align: right;
+    font-family: azo-sans-web, sans-serif;
+    font-weight: 1000;   
+    font-style: italic;
+
+
 }
 
-.button-options{
-   
+.button-options {
     margin: 5px;
-    margin-left: 2.5%;
+    display: block;
+    margin-left: 10%;
 }
 
-#add-bookmark{
+#add-bookmark {
     background: white;
+    background-color: #D3D3D3;
+    border-radius: 2px;
 }
 
 .bookmark-form-display {
@@ -31,19 +41,24 @@ h1{
     margin: 0;
     margin-left: 30%;
     margin-right: 30%;
+    border: 0;
     top: 7%;
-    height: 400px;
-    background: white;
-    box-shadow: 0 8px 6px -6px black;
-    border: 0.5px solid black;
+    height: 500px;
+    background: #F0F0F0;
+    border: 1px dotted #B5B9C9;
     border-radius: 3px;
+    box-shadow: 0 8px 6px -6px #444444;
 }
+   
 
-.bookmark-form-display h2{
-    border: 0.5px solid #777;
-    padding: 10px;
+.bookmark-form-display h2 {
     margin: 0;
-    
+    margin-top: 5%; 
+    font-weight: 800;
+    font-family: azo-sans-web, sans-serif;
+    font-weight: 1000;   
+    font-style: italic;
+
 }
 
 .add-input-container {
@@ -53,49 +68,58 @@ h1{
     margin-top: 15px;
 }
 
-.add-button-container{
+.add-button-container {
     margin-top: 20px;
 }
 
-.add-bookmark-form{
+.add-bookmark-form {
     visibility: hidden;
 }
 
+#add-bookmark-cancel, #add-bookmark-submit{
+    background-color: white;
+    background:#D3D3D3;
+}
 
 u1 {
     list-style: none;
-    
+
 }
 
-h1{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+
+.bookmark-list-element {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
-.bookmark-list-element{
-display: flex;
-align-items: center;
-flex-direction: column;
-}
-
-.bookmark-element-expand{
+.bookmark-element-expand {
     margin-top: 5px;
+    font-size: 20px;
     height: 50px;
-    width: 95%;
+    width: 80%;
     text-align: left;
     cursor: pointer;
-    background-color: white;
+    background: #B5B9C9;
+    border-radius: 2px;
 }
 
-.bookmark-expanded-view{
-    border: solid 0.5px #777;
+.bookmark-expanded-view {
+    background-color: #CFD7E8;
     border-top: none;
     padding: 5px;
-    width: 95%;
-    background: white;
-    font-size: 1vw;
+    width: 80%;
+    border-radius: 2px;
+    font-size: 16px;
 }
-.bookmark-expanded-view h2{
-    font-size: 2vw;
+
+.bookmark-expanded-view label{
+    font-size: 18px;
+}
+#bookmark-element-delete{
+    background-color: white;
+    background-color:#D3D3D3;
+    
 }
 
 .bookmark-element-expand:hover {
@@ -103,13 +127,10 @@ flex-direction: column;
 }
 
 .bookmark-element-expand:after {
-    content: '\02795'; /* Unicode character for "plus" sign (+) */
-    font-size: 13px;
+    content: '\02795';
+    font-size: 10px;
     color: #777;
     float: right;
     margin-left: 5px;
-  }
-
-  .active:after {
-    content: "\2796";
-  }
+}
+  
