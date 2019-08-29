@@ -11,14 +11,13 @@ body {
 }
 
 header h1 {
+    display: flex;
     margin: 5px;
-    margin-right: 65%;
+    margin-left: 18%;
     text-align: right;
     font-family: azo-sans-web, sans-serif;
     font-weight: 1000;   
     font-style: italic;
-
-
 }
 
 .button-options {
@@ -133,4 +132,3 @@ u1 {
     float: right;
     margin-left: 5px;
 }
-  
